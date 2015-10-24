@@ -10,7 +10,7 @@ public class AllGenes {
     public int findStopIndex(String dna, int index){
         
         int stop1 = dna.indexOf("tga",index);
-        if(stop1==-1 || (stop1-index%3 !=0)){
+        if(stop1==-1 || (stop1-index)%3 !=0){
             stop1 = dna.length();
         }
         
@@ -28,4 +28,47 @@ public class AllGenes {
         
     }
     
+    
+    
+public void printAll(String dna){
+    
+    int start = 0;
+    while(true){
+        int loc = dna.toLowerCase().indexOf("atg",start);
+        if(loc == -1){
+            break;
+        }
+        System.out.println("starts at "+loc);
+        int end = findStopIndex(dna.toLowerCase(),loc+3);
+        System.out.println("stops at "+end);
+        
+        if(end!=dna.length()){
+            String string = dna.substring(loc,end+3);
+            System.out.println(string);
+        }
+        start = loc +3;
+    }
 }
+
+
+ public void testFinder(){
+    
+    printAll("ATGAAATGAAAA");
+    
+    System.out.println("\n");
+    
+    printAll("ccatgccctaataaatgtctgtaatgtaga");
+    
+    System.out.println("\n");
+    
+    printAll("CATGTAATAGATGAATGACTGATAGATATGCTTGTATGCTATGAAAATGTGAAATGACCCA")
+    ;
+}
+
+
+}
+
+
+
+
+
