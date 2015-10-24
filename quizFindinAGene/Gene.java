@@ -30,7 +30,7 @@ public class Gene {
 		
 		
 		else {
-			return "";
+			return "-1";
 		}
 	}
 	
