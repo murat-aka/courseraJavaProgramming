@@ -65,7 +65,8 @@ public class Gene {
 		//String a = "ATGCCCTAG";
 		//String ap = "ATGCCCTAG";
 		//String a="ataaactatgttttaaatgt";
-		String a="AATGCTAGTTTAAATCTGA";
+		//String a="AATGCTAGTTTAAATCTGA";
+		String a="AAATGCCCTAACTAGATTGAAACC";
 		//String a= "acatgataacctaag";
 		String result = findProtein(a.toLowerCase());
 		if (true) {
