@@ -18,7 +18,8 @@ public class WhichCountriesExport {
         CSVParser parser = fr.getCSVParser();
         //System.out.println(countryInfo(parser,"Germany"));
         //listExportersTwoProducts(parser, "gold", "diamonds");
-        System.out.println(numberOfExporters(parser,"gold" ));
+        //System.out.println(numberOfExporters(parser,"gold" ));
+        bigExporters(parser,"$999,999,999");
         
     }
     
@@ -78,5 +79,20 @@ public class WhichCountriesExport {
     }
     
     
+    
+    public void bigExporters(CSVParser parser, String amount){
+        
+        for (CSVRecord record : parser){
+        
+          if(record.get("Value (dollars)").length() > amount.length()){
+              
+             
+              System.out.println(record.get("Country") +" " + record.get("Value (dollars)"));
+          }
+        
+        
+        }
+        
+    }
 
 }
