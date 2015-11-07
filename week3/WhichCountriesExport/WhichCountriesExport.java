@@ -17,7 +17,8 @@ public class WhichCountriesExport {
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
         //System.out.println(countryInfo(parser,"Germany"));
-        listExportersTwoProducts(parser, "gold", "diamonds");
+        //listExportersTwoProducts(parser, "gold", "diamonds");
+        System.out.println(numberOfExporters(parser,"gold" ));
         
     }
     
@@ -54,6 +55,26 @@ public class WhichCountriesExport {
         
         
        }
+    }
+    
+    
+    
+    public int numberOfExporters(CSVParser parser, String exportItem){
+        
+        int count=0;
+        
+        for (CSVRecord record : parser){
+        
+          if(record.get("Exports").contains(exportItem) ){
+              
+              count++;
+              
+          }
+        
+        
+        }
+        
+        return count;
     }
     
     
