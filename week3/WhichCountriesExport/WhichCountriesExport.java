@@ -16,10 +16,10 @@ public class WhichCountriesExport {
         
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
-        //System.out.println(countryInfo(parser,"Germany"));
-        //listExportersTwoProducts(parser, "gold", "diamonds");
-        //System.out.println(numberOfExporters(parser,"gold" ));
-        bigExporters(parser,"$999,999,999");
+        //System.out.println(countryInfo(parser,"Nauru"));
+        //listExportersTwoProducts(parser, "fish", "nuts");
+        //System.out.println(numberOfExporters(parser,"sugar" ));
+        bigExporters(parser,"$999,999,999,999");
         
     }
     
@@ -33,8 +33,8 @@ public class WhichCountriesExport {
                 return country + ": " + record.get("Exports") + ": " + record.get("Value (dollars)") ;
             }
             
-            System.out.println(country + " ");
-            System.out.println(record.get("Country") + " ");
+            //System.out.println(country + " ");
+            //System.out.println(record.get("Country") + " ");
 			//System.out.print(record.get("Name") + " ");
 			//System.out.print(record.get("Favorite Color") + " ");
 			//System.out.println(record.get("Favorite Food"));
