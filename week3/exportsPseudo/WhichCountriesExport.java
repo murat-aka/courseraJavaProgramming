@@ -7,7 +7,7 @@ import edu.duke.*;
 import org.apache.commons.csv.*;
 
 public class WhichCountriesExport {
-	public void listExporters(CSVParser parser, String exportOfInterest) {
+	public void listExporters(CSVParser parser, String country) {
 		//for each row in the CSV File
 
 			//Look at the "Exports" column
