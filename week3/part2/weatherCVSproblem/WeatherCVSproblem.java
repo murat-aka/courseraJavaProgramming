@@ -26,7 +26,15 @@ public class WeatherCVSproblem {
 		//The largestSoFar is the answer
 		return smallestSoFar;
 	}
-
+    
+	
+	public void testColdestHourInFile(){
+		CSVRecord smallest = fileWithColdestTemperature();
+		System.out.println("coldest temperature was " + smallest.get("TemperatureF") +
+				   " at " + smallest.get("DateUTC"));
+	}
+	
+	
 	public void testHottestInDay () {
 		FileResource fr = new FileResource("data/2015/weather-2015-01-01.csv");
 		CSVRecord largest = coldestHourInFile(fr.getCSVParser());
@@ -34,7 +42,7 @@ public class WeatherCVSproblem {
 				   " at " + largest.get("TimeEST"));
 	}
 
-	public CSVRecord hottestInManyDays() {
+	public CSVRecord  fileWithColdestTemperature() {
 		CSVRecord largestSoFar = null;
 		DirectoryResource dr = new DirectoryResource();
 		// iterate over files
@@ -49,28 +57,24 @@ public class WeatherCVSproblem {
 		return largestSoFar;
 	}
 
-	public CSVRecord getSmallestOfTwo (CSVRecord currentRow, CSVRecord largestSoFar) {
+	public CSVRecord getSmallestOfTwo (CSVRecord currentRow, CSVRecord smallestSoFar) {
 		//If largestSoFar is nothing
-		if (largestSoFar == null) {
-			largestSoFar = currentRow;
+		if (smallestSoFar == null) {
+			smallestSoFar = currentRow;
 		}
 		//Otherwise
 		else {
 			double currentTemp = Double.parseDouble(currentRow.get("TemperatureF"));
-			double largestTemp = Double.parseDouble(largestSoFar.get("TemperatureF"));
+			double smallestTemp = Double.parseDouble(smallestSoFar.get("TemperatureF"));
 			//Check if currentRow’s temperature > largestSoFar’s
-			if (currentTemp > largestTemp) {
+			if (currentTemp < smallestTemp) {
 				//If so update largestSoFar to currentRow
-				largestSoFar = currentRow;
+				smallestSoFar = currentRow;
 			}
 		}
-		return largestSoFar;
+		return smallestSoFar;
 	}
 
-	public void testColdestHourInFile(){
-		CSVRecord smallest = hottestInManyDays();
-		System.out.println("coldest temperature was " + smallest.get("TemperatureF") +
-				   " at " + smallest.get("DateUTC"));
-	}
+	
 
 }
