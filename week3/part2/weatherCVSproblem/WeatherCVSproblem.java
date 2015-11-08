@@ -43,18 +43,18 @@ public class WeatherCVSproblem {
 	}
 
 	public CSVRecord  fileWithColdestTemperature() {
-		CSVRecord largestSoFar = null;
+		CSVRecord coldestSoFar = null;
 		DirectoryResource dr = new DirectoryResource();
 		// iterate over files
 		for (File f : dr.selectedFiles()) {
 			FileResource fr = new FileResource(f);
-			// use method to get largest in file.
+			// use method to get smallest in file.
 			CSVRecord currentRow = coldestHourInFile(fr.getCSVParser());
 			// use method to compare two records
-			largestSoFar = getSmallestOfTwo(currentRow, largestSoFar);
+			coldestSoFar = getSmallestOfTwo(currentRow, coldestSoFar);
 		}
-		//The largestSoFar is the answer
-		return largestSoFar;
+		//The coldestSoFar is the answer
+		return coldestSoFar;
 	}
 
 	public CSVRecord getSmallestOfTwo (CSVRecord currentRow, CSVRecord smallestSoFar) {
