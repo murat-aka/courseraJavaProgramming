@@ -101,7 +101,7 @@ public class WeatherCVSproblem {
              
         for (CSVRecord currentRow : parser) {
             
-            if(smallestSoFar.equals(null))smallestSoFar = currentRow;
+            if(smallestSoFar == null)smallestSoFar = currentRow;
             
             double currentHumidity = Double.parseDouble(currentRow.get("Humidity"));
             double smallestHumidity = Double.parseDouble(smallestSoFar.get("Humidity"));
