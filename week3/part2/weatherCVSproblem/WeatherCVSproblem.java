@@ -15,21 +15,21 @@ import java.io.*;
 public class WeatherCVSproblem {
     
     
-    public CSVRecord hottestHourInFile(CSVParser parser) {
+   	public CSVRecord coldestHourInFile(CSVParser parser) {
 		//start with largestSoFar as nothing
-		CSVRecord largestSoFar = null;
+		CSVRecord smallestSoFar = null;
 		//For each row (currentRow) in the CSV File
 		for (CSVRecord currentRow : parser) {
 			// use method to compare two records
-			largestSoFar = getLargestOfTwo(currentRow, largestSoFar);
+			smallestSoFar = getSmallestOfTwo(currentRow, smallestSoFar);
 		}
 		//The largestSoFar is the answer
-		return largestSoFar;
+		return smallestSoFar;
 	}
 
 	public void testHottestInDay () {
 		FileResource fr = new FileResource("data/2015/weather-2015-01-01.csv");
-		CSVRecord largest = hottestHourInFile(fr.getCSVParser());
+		CSVRecord largest = coldestHourInFile(fr.getCSVParser());
 		System.out.println("hottest temperature was " + largest.get("TemperatureF") +
 				   " at " + largest.get("TimeEST"));
 	}
@@ -41,15 +41,15 @@ public class WeatherCVSproblem {
 		for (File f : dr.selectedFiles()) {
 			FileResource fr = new FileResource(f);
 			// use method to get largest in file.
-			CSVRecord currentRow = hottestHourInFile(fr.getCSVParser());
+			CSVRecord currentRow = coldestHourInFile(fr.getCSVParser());
 			// use method to compare two records
-			largestSoFar = getLargestOfTwo(currentRow, largestSoFar);
+			largestSoFar = getSmallestOfTwo(currentRow, largestSoFar);
 		}
 		//The largestSoFar is the answer
 		return largestSoFar;
 	}
 
-	public CSVRecord getLargestOfTwo (CSVRecord currentRow, CSVRecord largestSoFar) {
+	public CSVRecord getSmallestOfTwo (CSVRecord currentRow, CSVRecord largestSoFar) {
 		//If largestSoFar is nothing
 		if (largestSoFar == null) {
 			largestSoFar = currentRow;
