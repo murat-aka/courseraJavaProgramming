@@ -87,7 +87,7 @@ public class WeatherCVSproblem {
             //Check if currentRow’s temperature > largestSoFar’s
             if (currentTemp < smallestTemp) {
                 //If so update largestSoFar to currentRow
-                smallestSoFar = currentRow;
+                if(currentTemp!=-9999)smallestSoFar = currentRow;
             }
         }
         return smallestSoFar;
@@ -103,6 +103,7 @@ public class WeatherCVSproblem {
             
             if(smallestSoFar == null)smallestSoFar = currentRow;
             
+            if(currentRow.get("Humidity").equals("N/A"))continue;
             double currentHumidity = Double.parseDouble(currentRow.get("Humidity"));
             double smallestHumidity = Double.parseDouble(smallestSoFar.get("Humidity"));
             //Check if currentRow’s temperature > largestSoFar’s
@@ -183,5 +184,35 @@ public class WeatherCVSproblem {
 	    
 	}
 	   
+    public double averageTemperatureWithHighHumidityInFile(CSVParser parser, int value ){
+        
+        double sum=0;
+	    double avarage =0;
+	    int count = 1;
+	   for (CSVRecord currentRow : parser) {
+            // use method to compare two records
+            double currentHumidity = Double.parseDouble(currentRow.get("Humidity"));
+            double currentTemp = Double.parseDouble(currentRow.get("TemperatureF"));
+            if(currentHumidity>=value){
+                sum += currentTemp;
+                avarage =sum/count;
+                count++;
+            }
+        }
+	   
+        return avarage;
+    }
+    
+    
+    public void testAverageTemperatureWithHighHumidityInFile(){
+        
+        FileResource fr = new FileResource();
+        CSVParser parser = fr.getCSVParser();
+	    double avarage = averageTemperatureWithHighHumidityInFile(parser,80);
+	    if(avarage==0)System.out.println("No temperatures with that humidity");
+	     
+	    else System.out.println("Average temperature when high Humidity is " + avarage);
+        
+    }
     
 }
