@@ -45,19 +45,24 @@ public class WeatherCVSproblem {
 	}
 	
 	
-    public CSVRecord  fileWithColdestTemperature() {
+    public String  fileWithColdestTemperature() {
         CSVRecord coldestSoFar = null;
+        CSVRecord coldestTemp;
         DirectoryResource dr = new DirectoryResource();
         // iterate over files
         for (File f : dr.selectedFiles()) {
+            
+            coldestTemp = coldestSoFar;
             FileResource fr = new FileResource(f);
             // use method to get smallest in file.
             CSVRecord currentRow = coldestHourInFile(fr.getCSVParser());
             // use method to compare two records
             coldestSoFar = getSmallestOfTwo(currentRow, coldestSoFar);
+            if(!coldestSoFar.equals(coldestTemp))filename = f.getAbsolutePath();
+            
         }
         //The coldestSoFar is the answer
-        return coldestSoFar;
+        return filename;
     }
 
     public CSVRecord getSmallestOfTwo (CSVRecord currentRow, CSVRecord smallestSoFar) {
