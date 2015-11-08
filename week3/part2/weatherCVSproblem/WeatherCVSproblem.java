@@ -94,5 +94,21 @@ public class WeatherCVSproblem {
     }
 
     
-
+    public CSVRecord lowestHumidityInFile (CSVParser parser) {
+       
+        CSVRecord smallestSoFar = null;
+        //For each row (currentRow) in the CSV File
+        for (CSVRecord currentRow : parser) {
+            
+            double currentHumidity = Double.parseDouble(currentRow.get("Humidity"));
+            double smallestHumidity = Double.parseDouble(smallestSoFar.get("Humidity"));
+            //Check if currentRow’s temperature > largestSoFar’s
+            if (currentHumidity < smallestHumidity) {
+                //If so update largestSoFar to currentRow
+                smallestSoFar = currentRow;
+            }
+        }
+        
+        return smallestSoFar;
+    }
 }

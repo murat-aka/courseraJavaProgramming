@@ -9,4 +9,6 @@ comment3.params=
 comment3.target=java.lang.String\ fileWithColdestTemperature()
 comment4.params=currentRow\ smallestSoFar
 comment4.target=org.apache.commons.csv.CSVRecord\ getSmallestOfTwo(org.apache.commons.csv.CSVRecord,\ org.apache.commons.csv.CSVRecord)
-numComments=5
+comment5.params=parser
+comment5.target=org.apache.commons.csv.CSVRecord\ lowestHumidityInFile(org.apache.commons.csv.CSVParser)
+numComments=6
