@@ -39,17 +39,27 @@ public class WeatherCVSproblem {
         
     public void testFileWithColdestTemperature(){
         
-		CSVRecord smallest = fileWithColdestTemperature();
-		System.out.println("coldest temperature was " + smallest.get("TemperatureF") +
-				   " at " + smallest.get("DateUTC"));
+		String filename = fileWithColdestTemperature();
+		FileResource fr = new FileResource(filename);
+		CSVRecord smallest = coldestHourInFile(fr.getCSVParser());
+		System.out.println("Coldest day was in file "+ filename);
+		System.out.println("Coldest temperature on that day was " + smallest.get("TemperatureF"));
+		System.out.println("All the Temperature on the coldest day were:");
+		
+		for (CSVRecord currentRow : fr.getCSVParser()) {
+            // use method to compare two records
+            System.out.println(currentRow.get("DateUTC") + ": " + currentRow.get("TemperatureF") );;
+        }
 	}
 	
 	
     public String  fileWithColdestTemperature() {
         CSVRecord coldestSoFar = null;
         CSVRecord coldestTemp;
+        String filename="";
         DirectoryResource dr = new DirectoryResource();
         // iterate over files
+                
         for (File f : dr.selectedFiles()) {
             
             coldestTemp = coldestSoFar;
@@ -58,7 +68,7 @@ public class WeatherCVSproblem {
             CSVRecord currentRow = coldestHourInFile(fr.getCSVParser());
             // use method to compare two records
             coldestSoFar = getSmallestOfTwo(currentRow, coldestSoFar);
-            if(!coldestSoFar.equals(coldestTemp))filename = f.getAbsolutePath();
+            if(!coldestSoFar.equals(coldestTemp))filename = f.getPath();
             
         }
         //The coldestSoFar is the answer
