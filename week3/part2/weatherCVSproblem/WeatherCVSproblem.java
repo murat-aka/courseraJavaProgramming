@@ -125,4 +125,35 @@ public class WeatherCVSproblem {
         
     }
     
+    
+    public CSVRecord lowestHumidityInManyFiles(){
+        
+        CSVRecord lowestSoFar = null;
+		DirectoryResource dr = new DirectoryResource();
+		// iterate over files
+		for (File f : dr.selectedFiles()) {
+			FileResource fr = new FileResource(f);
+			// use method to get largest in file.
+			CSVRecord currentRow = lowestHumidityInFile(fr.getCSVParser());
+			// use method to compare two records
+			
+			if(lowestSoFar == null)lowestSoFar = currentRow;
+			double currentTemp = Double.parseDouble(currentRow.get("Humidity"));
+            double lowestTemp = Double.parseDouble(lowestSoFar.get("Humidity"));
+            //Check if currentRow’s temperature > largestSoFar’s
+            if (currentTemp < lowestTemp) {
+                //If so update largestSoFar to currentRow
+                lowestSoFar = currentRow;
+            }
+		}
+		//The largestSoFar is the answer
+		return lowestSoFar;
+        
+    } 
+    
+    public void testLowestHumidityInManyFiles(){
+		CSVRecord csv = lowestHumidityInManyFiles();
+		System.out.println("Lowest Humidity was " + csv.get("Humidity") + " at " + csv.get("DateUTC"));
+	}
+    
 }
