@@ -98,7 +98,10 @@ public class WeatherCVSproblem {
        
         CSVRecord smallestSoFar = null;
         //For each row (currentRow) in the CSV File
+             
         for (CSVRecord currentRow : parser) {
+            
+            if(smallestSoFar.equals(null))smallestSoFar = currentRow;
             
             double currentHumidity = Double.parseDouble(currentRow.get("Humidity"));
             double smallestHumidity = Double.parseDouble(smallestSoFar.get("Humidity"));
@@ -111,4 +114,15 @@ public class WeatherCVSproblem {
         
         return smallestSoFar;
     }
+    
+    public void  testLowestHumidityInFile(){
+        
+        FileResource fr = new FileResource();
+        CSVParser parser = fr.getCSVParser();
+        CSVRecord csv = lowestHumidityInFile(parser);
+        
+        System.out.println("Lowest Humidity was " + csv.get("Humidity") + " at " + csv.get("DateUTC"));
+        
+    }
+    
 }
