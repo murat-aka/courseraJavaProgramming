@@ -155,5 +155,33 @@ public class WeatherCVSproblem {
 		CSVRecord csv = lowestHumidityInManyFiles();
 		System.out.println("Lowest Humidity was " + csv.get("Humidity") + " at " + csv.get("DateUTC"));
 	}
+	
+	
+	public double averageTemperatureInFile(CSVParser parser){
+	    
+	    double sum=0;
+	    double avarage =0;
+	    int count = 1;
+	   for (CSVRecord currentRow : parser) {
+            // use method to compare two records
+            double currentTemp = Double.parseDouble(currentRow.get("TemperatureF"));
+            sum += currentTemp;
+            avarage =sum/count;
+            count++;
+        }
+	   
+        return avarage;
+	}
+	
+	public void  testAverageTemperatureInFile(){
+	    
+	    
+	    FileResource fr = new FileResource();
+        CSVParser parser = fr.getCSVParser();
+	    double avarage = averageTemperatureInFile(parser);
+	    System.out.println("Average temperature in file is " + avarage);
+	    
+	}
+	   
     
 }
