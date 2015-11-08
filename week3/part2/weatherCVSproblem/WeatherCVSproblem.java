@@ -67,10 +67,10 @@ public class WeatherCVSproblem {
 		return largestSoFar;
 	}
 
-	public void testHottestInManyDays () {
-		CSVRecord largest = hottestInManyDays();
-		System.out.println("hottest temperature was " + largest.get("TemperatureF") +
-				   " at " + largest.get("DateUTC"));
+	public void testColdestHourInFile(){
+		CSVRecord smallest = hottestInManyDays();
+		System.out.println("coldest temperature was " + smallest.get("TemperatureF") +
+				   " at " + smallest.get("DateUTC"));
 	}
 
 }

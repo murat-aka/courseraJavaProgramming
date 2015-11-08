@@ -8,5 +8,5 @@ comment2.target=org.apache.commons.csv.CSVRecord\ hottestInManyDays()
 comment3.params=currentRow\ largestSoFar
 comment3.target=org.apache.commons.csv.CSVRecord\ getSmallestOfTwo(org.apache.commons.csv.CSVRecord,\ org.apache.commons.csv.CSVRecord)
 comment4.params=
-comment4.target=void\ testHottestInManyDays()
+comment4.target=void\ testColdestHourInFile()
 numComments=5
