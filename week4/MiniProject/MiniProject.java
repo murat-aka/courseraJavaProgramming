@@ -8,6 +8,7 @@
 
 import edu.duke.*;
 import org.apache.commons.csv.*;
+import java.io.*;
 
 
 public class MiniProject {
@@ -107,6 +108,46 @@ public class MiniProject {
 	
 	public void testWhatIsNameInYear(){
 	    whatIsNameInYear("Isabella",2012, 2014, "F");
+	}
+	
+	
+	public int yearOfHighestRank(String name, String gender){
+	    
+	   
+	    int yearOfHighestRank=-1;
+	    int temp=0;
+	    String filename="";
+	    DirectoryResource dr = new DirectoryResource();
+        // iterate over files
+                
+        for (File f : dr.selectedFiles()) {
+            
+            filename = f.getPath().substring(f.getPath().indexOf("yob")+3,f.getPath().indexOf("yob")+7);
+            //System.out.println(filename);
+            int currentRank = getRank(Integer.parseInt(filename),name,gender);
+            //System.out.println(currentRank);
+            
+            if(currentRank != -1 && temp == 0){
+                temp=currentRank;
+                yearOfHighestRank=Integer.parseInt(filename);
+                
+            }
+            if(currentRank<temp && currentRank != -1){
+                
+                temp = currentRank;
+                yearOfHighestRank = Integer.parseInt(filename);
+            }
+            
+        }
+        //The coldestSoFar is the answer
+        
+	    
+	    return yearOfHighestRank;
+	}
+	
+	public void testYearOfHighestRank(){
+	    
+	    System.out.println(yearOfHighestRank("Mason","F"));
 	}
 
 }
