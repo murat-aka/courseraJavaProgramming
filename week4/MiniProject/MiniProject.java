@@ -187,7 +187,42 @@ public class MiniProject {
         System.out.println(getAvarageRank("Mason","F"));
         //System.out.println(getAvarageRank("Jacob","M"));
     }
+    
+    
+    public int getTotalBirthsRankedHigher(int year, String name, String gender){
+        
+        int totalNumOfBirths=0;
+        
+        int rank = getRank(year, name, gender);
+        
+        //System.out.println(rank);
+        
+        FileResource fr = new FileResource("testing/yob"+Integer.toString(year)+"short.csv");
+         
+        for (CSVRecord rec : fr.getCSVParser(false)) {
+           
+           // System.out.println(rec.get(2));
+            if (rank < 2)break;
+               
+            
+            
+            if(rec.get(1).equals(gender))
+            {totalNumOfBirths += Integer.parseInt(rec.get(2));
+              rank--;
+            }
+        }
+        
+        return totalNumOfBirths;
+    }
        
+    
+    
+    public void testGetTotalBirthsRankedHigher(){
+        
+        System.out.println(getTotalBirthsRankedHigher(2012,"Noah","M"));
+    }
+    
+    
 
 }
 
