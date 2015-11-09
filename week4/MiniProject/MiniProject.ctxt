@@ -7,4 +7,6 @@ comment2.params=
 comment2.target=void\ testTotalBirths()
 comment3.params=year\ name\ gender
 comment3.target=int\ getRank(int,\ java.lang.String,\ java.lang.String)
-numComments=4
+comment4.params=
+comment4.target=void\ testGetRank()
+numComments=5

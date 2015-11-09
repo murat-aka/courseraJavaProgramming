@@ -52,11 +52,25 @@ public class MiniProject {
 	
 	
 	public int getRank(int year, String name, String gender){
+	    int rank = -1;
+	    int count = 1;
 	    
 	    FileResource fr = new FileResource("data/yob"+Integer.toString(year)+".csv");
-		totalBirths(fr);
+		for (CSVRecord rec : fr.getCSVParser(false)) {
+			
+			
+			if (rec.get(1).equals(gender) && rec.get(0).equals(name)) {
+				rank = count;
+			}
+			if(rec.get(1).equals(gender))count++;
+		}
 		
-		return year;
+		return rank;
+	}
+	
+	public void testGetRank() {
+		//FileResource fr = new FileResource();
+		System.out.println(getRank(2012, "Mason", "F"));
 	}
 
 }
