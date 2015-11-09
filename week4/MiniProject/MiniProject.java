@@ -32,12 +32,12 @@ public class MiniProject {
         int totalGirls = 0;
         for (CSVRecord rec : fr.getCSVParser(false)) {
             int numBorn = Integer.parseInt(rec.get(2));
-            totalBirths += numBorn;
+            totalBirths ++;
             if (rec.get(1).equals("M")) {
-                totalBoys += numBorn;
+                totalBoys ++;
             }
             else {
-                totalGirls += numBorn;
+                totalGirls ++;
             }
         }
         System.out.println("total births = " + totalBirths);
@@ -47,7 +47,7 @@ public class MiniProject {
 
     public void testTotalBirths () {
         //FileResource fr = new FileResource();
-        FileResource fr = new FileResource("data/yob2014.csv");
+        FileResource fr = new FileResource("data/yob1900.csv");
         totalBirths(fr);
     }
     
@@ -56,7 +56,7 @@ public class MiniProject {
         int rank = -1;
         int count = 1;
         
-        FileResource fr = new FileResource("testing/yob"+Integer.toString(year)+"short.csv");
+        FileResource fr = new FileResource("data/yob"+Integer.toString(year)+".csv");
         for (CSVRecord rec : fr.getCSVParser(false)) {
             
             
@@ -71,7 +71,8 @@ public class MiniProject {
     
     public void testGetRank() {
         //FileResource fr = new FileResource();
-        System.out.println(getRank(2012, "Mason", "F"));
+        //System.out.println(getRank(1960, "Emily", "F"));
+        System.out.println(getRank(1971, "Frank", "M"));
     }
     
     
@@ -79,7 +80,7 @@ public class MiniProject {
         int count = 1;
         
         String name="NO NAME";
-        FileResource fr = new FileResource("testing/yob"+Integer.toString(year)+"short.csv");
+        FileResource fr = new FileResource("data/yob"+Integer.toString(year)+".csv");
         for (CSVRecord rec : fr.getCSVParser(false)) {
             
             
@@ -95,7 +96,8 @@ public class MiniProject {
     
     public void testGetName(){
         
-        System.out.println(getName(2012,20,"M"));
+        //System.out.println(getName(1980,350,"F"));
+        System.out.println(getName(1982,450,"M"));
         
     }
     
@@ -107,7 +109,8 @@ public class MiniProject {
     }
     
     public void testWhatIsNameInYear(){
-        whatIsNameInYear("Isabella",2012, 2014, "F");
+        //whatIsNameInYear("Susan",1972, 2014, "F");
+        whatIsNameInYear("Owen",1974, 2014, "M");
     }
     
     
@@ -147,7 +150,8 @@ public class MiniProject {
     
     public void testYearOfHighestRank(){
         
-        System.out.println(yearOfHighestRank("Mason","F"));
+        //System.out.println(yearOfHighestRank("Genevieve","F"));
+        System.out.println(yearOfHighestRank("Mich","M"));
     }
     
     public double getAvarageRank(String name, String gender){
@@ -184,8 +188,9 @@ public class MiniProject {
     
     public void testGetAvarageRank(){
         
-        System.out.println(getAvarageRank("Mason","F"));
+        //System.out.println(getAvarageRank("Susan","F"));
         //System.out.println(getAvarageRank("Jacob","M"));
+        System.out.println(getAvarageRank("Robert","M"));
     }
     
     
@@ -197,7 +202,7 @@ public class MiniProject {
         
         //System.out.println(rank);
         
-        FileResource fr = new FileResource("testing/yob"+Integer.toString(year)+"short.csv");
+        FileResource fr = new FileResource("data/yob"+Integer.toString(year)+".csv");
          
         for (CSVRecord rec : fr.getCSVParser(false)) {
            
@@ -219,7 +224,9 @@ public class MiniProject {
     
     public void testGetTotalBirthsRankedHigher(){
         
-        System.out.println(getTotalBirthsRankedHigher(2012,"Noah","M"));
+        //System.out.println(getTotalBirthsRankedHigher(2012,"Noah","M"));
+        //System.out.println(getTotalBirthsRankedHigher(1990,"Emily","F"));
+         System.out.println(getTotalBirthsRankedHigher(1990,"Drew","M"));
     }
     
     
