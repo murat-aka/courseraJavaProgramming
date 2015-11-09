@@ -72,5 +72,30 @@ public class MiniProject {
 		//FileResource fr = new FileResource();
 		System.out.println(getRank(2012, "Mason", "F"));
 	}
+	
+	
+	public String getName(int year, int rank, String gender){
+	    int count = 1;
+	    
+	    String name="NO NAME";
+	    FileResource fr = new FileResource("testing/yob"+Integer.toString(year)+"short.csv");
+		for (CSVRecord rec : fr.getCSVParser(false)) {
+			
+			
+			if (rec.get(1).equals(gender) && count==rank) {
+				name = rec.get(0);
+			}
+			if(rec.get(1).equals(gender))count++;
+		}
+		
+	    return name;
+	}
+	
+	
+	public void testGetName(){
+	    
+	    System.out.println(getName(2012,20,"M"));
+	    
+	}
 
 }
