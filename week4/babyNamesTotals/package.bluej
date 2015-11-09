@@ -16,6 +16,7 @@ target1.editor.x=250
 target1.editor.y=36
 target1.height=50
 target1.name=BabyBirths
+target1.naviview.expanded=true
 target1.showInterface=false
 target1.type=ClassTarget
 target1.typeParameters=
