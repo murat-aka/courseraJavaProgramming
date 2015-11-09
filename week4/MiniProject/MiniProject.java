@@ -97,5 +97,16 @@ public class MiniProject {
 	    System.out.println(getName(2012,20,"M"));
 	    
 	}
+	
+	
+	public void whatIsNameInYear(String name,int year, int newYear, String gender){
+	    
+	    int rank = getRank(year,name,gender);
+	    System.out.println(name+" born in "+year+" would be "+getName(newYear,rank,gender)+ " if she was born in "+newYear);
+	}
+	
+	public void testWhatIsNameInYear(){
+	    whatIsNameInYear("Isabella",2012, 2014, "F");
+	}
 
 }
