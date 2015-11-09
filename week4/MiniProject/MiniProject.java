@@ -51,6 +51,12 @@ public class MiniProject {
 	}
 	
 	
-	
+	public int getRank(int year, String name, String gender){
+	    
+	    FileResource fr = new FileResource("data/yob"+Integer.toString(year)+".csv");
+		totalBirths(fr);
+		
+		return year;
+	}
 
 }
