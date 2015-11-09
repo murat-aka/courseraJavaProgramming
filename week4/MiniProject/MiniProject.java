@@ -55,7 +55,7 @@ public class MiniProject {
 	    int rank = -1;
 	    int count = 1;
 	    
-	    FileResource fr = new FileResource("data/yob"+Integer.toString(year)+".csv");
+	    FileResource fr = new FileResource("testing/yob"+Integer.toString(year)+"short.csv");
 		for (CSVRecord rec : fr.getCSVParser(false)) {
 			
 			
